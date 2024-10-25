@@ -7,7 +7,7 @@ class Product:
     quantity: int
 
     def __init__(self, name, description, price, quantity):
-        self.name = name  # Название товара
+        self.name = name   # Название товара
         self.description = description  # Описание товара
         self.__price = price  # Цена товара
         self.quantity = quantity  # Количество в наличии

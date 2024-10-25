@@ -22,7 +22,6 @@ def create_objects_from_json(data):
         category.append(Category(**categor))
     return category
 
-
 if __name__ == "__main__":
     raw_data = read_json("../data/products.json")
     category_data = create_objects_from_json(raw_data)

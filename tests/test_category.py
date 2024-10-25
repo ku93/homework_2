@@ -3,7 +3,6 @@ def test_category_init(category):
     assert category.description == "Смартфоны, как средство не только коммуникации"
     assert len(category.products_in_list) == 1
 
-
 def test_add_product_and_count(category, product):
     """Тест на добавление продукта в категорию и подсчет продуктов."""
     # Убедимся, что в начале в категории только один продукт
@@ -11,7 +10,6 @@ def test_add_product_and_count(category, product):
     new_product = product
     category.add_product(new_product)  # Добавляем новый продукт # Проверяем, что теперь в категории 2 продукта
     assert len(category.products_in_list) == 2
-
 
 def test_total_products(category):
     """Тест на общее количество продуктов в категории."""

@@ -5,8 +5,8 @@ class Category:
     """Класс для категорий"""
 
     # Атрибуты класса для хранения общей информации
-    total_categories = 0  # Общее количество категорий
-    total_products = 0  # Общее количество товаров
+    total_categories = 0   # Общее количество категорий
+    total_products = 0   # Общее количество товаров
 
     name: str
     description: str
