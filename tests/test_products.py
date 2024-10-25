@@ -1,4 +1,3 @@
-from src.category import Category
 from src.products import Product
 
 
@@ -8,12 +7,14 @@ def test_product_init(product):
     assert product.price == 180000.0
     assert product.quantity == 5
 
+
 def test_product_creat():
     product = Product("Samsung", "Серый цвет", 180000.0, 5)
     assert product.name == "Samsung"
     assert product.description == "Серый цвет"
     assert product.price == 180000.0
     assert product.quantity == 5
+
 
 def test_product_upgread(capsys, product):
     product.price = "-1000"

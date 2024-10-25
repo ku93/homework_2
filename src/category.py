@@ -1,5 +1,6 @@
 from src.products import Product
 
+
 class Category:
     """Класс для категорий"""
 
@@ -22,9 +23,7 @@ class Category:
         """Метод для добавления товара в категорию."""
         if isinstance(product, Product):
             self.__products.append(product)
-            Category.total_products += (
-                product.quantity
-            )  # Увеличиваем общее количество продуктов на указанное количество
+            Category.total_products += 1
             print(f"Добавлен {product.name} в категорию '{self.name}' (количество: {product.quantity}).")
         else:
             print("Ошибка: В объекте должен быть тип Product.")
@@ -33,7 +32,7 @@ class Category:
     def products(self):
         products_str = ""
         for product in self.__products:
-            products_str += f'{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n'
+            products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return products_str
 
     @products.setter
@@ -45,7 +44,6 @@ class Category:
     def products_in_list(self):
         return self.__products
 
-
     def __len__(self):
         """Метод для возвращения количества продуктов в категории."""
         return sum(product.quantity for product in self.products)
@@ -55,7 +53,8 @@ class Category:
         return len(self)
 
     def __str__(self):
-        return f"Category(name={self.name}, description={self.description}, number of products={self.get_product_count()})"
+        return (f"Category(name={self.name}, description={self.description},"
+                f" number of products={self.get_product_count()})")
 
 
 if __name__ == "__main__":
@@ -65,7 +64,8 @@ if __name__ == "__main__":
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
     product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
 
-    category1 = Category("Смартфоны",
+    category1 = Category(
+        "Смартфоны",
         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
         [product1, product2, product3],
     )

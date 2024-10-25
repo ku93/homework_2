@@ -13,7 +13,7 @@ class Product:
         self.quantity = quantity  # Количество в наличии
 
     @classmethod
-    def new_products(cls,  name, description, price, quantity):
+    def new_product(cls, name, description, price, quantity):
         return cls(name, description, price, quantity)
 
     @property
@@ -27,12 +27,11 @@ class Product:
             return
         self.__price = float(new_price)
 
-
-
     def __str__(self):
         return (
             f"Product(name={self.name}, description={self.description}, price={self.price}, quantity={self.quantity})"
         )
+
 
 if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)

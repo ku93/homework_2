@@ -1,16 +1,16 @@
 import json
-import  os
+import os
 
-from  src.products import Product
 from src.category import Category
-from tests.conftest import category
+from src.products import Product
 
 
-def read_json(path: str)->dict:
+def read_json(path: str) -> dict:
     full_path = os.path.abspath(path)
     with open(full_path, "r", encoding="utf-8") as file:
         data = json.load(file)
         return data
+
 
 def create_objects_from_json(data):
     category = []
@@ -21,7 +21,6 @@ def create_objects_from_json(data):
         categor["products"] = products
         category.append(Category(**categor))
     return category
-
 
 
 if __name__ == "__main__":
