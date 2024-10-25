@@ -5,8 +5,8 @@ class Category:
     """Класс для категорий"""
 
     # Атрибуты класса для хранения общей информации
-    total_categories = 0   # Общее количество категорий
-    total_products = 0   # Общее количество товаров
+    total_categories = 0  # Общее количество категорий
+    total_products = 0  # Общее количество товаров
 
     name: str
     description: str
@@ -53,8 +53,10 @@ class Category:
         return len(self)
 
     def __str__(self):
-        return (f"Category(name={self.name}, description={self.description},"
-                f" number of products={self.get_product_count()})")
+        return (
+            f"Category(name={self.name}, description={self.description},"
+            f" number of products={self.get_product_count()})"
+        )
 
 
 if __name__ == "__main__":

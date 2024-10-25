@@ -15,6 +15,7 @@ def test_product_creat():
     assert product.price == 180000.0
     assert product.quantity == 5
 
+
 def test_product_upgread(capsys, product):
     product.price = "-1000"
     messege = capsys.readouterr()
