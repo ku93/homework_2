@@ -14,21 +14,37 @@ class Category:
     def __init__(self, name, description, products):
         self.name = name  # Название категории
         self.description = description  # Описание категории
-        self.products = []  # Список товаров категории
-        self.total_products = 0  # Количество товаров в данной категории
-        # Увеличиваем общее количество категорий
-        Category.total_categories += 1
+        self.__products = products if products else []  # Список товаров категории
+        self.total_categories += 1  # Количество товаров в данной категории
+        Category.total_products += len(products) if products else 0
 
     def add_product(self, product: Product):
         """Метод для добавления товара в категорию."""
         if isinstance(product, Product):
-            self.products.append(product)
+            self.__products.append(product)
             Category.total_products += (
                 product.quantity
             )  # Увеличиваем общее количество продуктов на указанное количество
             print(f"Добавлен {product.name} в категорию '{self.name}' (количество: {product.quantity}).")
         else:
             print("Ошибка: В объекте должен быть тип Product.")
+
+    @property
+    def products(self):
+        products_str = ""
+        for product in self.__products:
+            products_str += f'{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n'
+        return products_str
+
+    @products.setter
+    def products(self, product: Product):
+        self.__products.append(product)
+        Category.total_categories += 1
+
+    @property
+    def products_in_list(self):
+        return self.__products
+
 
     def __len__(self):
         """Метод для возвращения количества продуктов в категории."""
@@ -40,10 +56,6 @@ class Category:
 
     def __str__(self):
         return f"Category(name={self.name}, description={self.description}, number of products={self.get_product_count()})"
-
-
-
-
 
 
 if __name__ == "__main__":
@@ -58,27 +70,19 @@ if __name__ == "__main__":
         [product1, product2, product3],
     )
 
-    category1.add_product(product1)
-    category1.add_product(product2)
-    category1.add_product(product3)
-
     print(category1.name)
     print(category1.description)
-    print(len(category1.products))
+    print(category1.products)
     print(category1.total_categories)
     print(category1.total_products)
-
 
     category2 = Category(
         "Телевизоры",
         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
         [product4],
     )
-    category2.add_product(product4)
-
     print(category2.name)
     print(category2.description)
-    print(len(category2.products))
-
-    print(Category.total_categories)
-    print(Category.total_products)
+    print(category2.products)
+    print(category2.total_categories)
+    print(category2.total_products)

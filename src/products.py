@@ -9,8 +9,25 @@ class Product:
     def __init__(self, name, description, price, quantity):
         self.name = name  # Название товара
         self.description = description  # Описание товара
-        self.price = price  # Цена товара
+        self.__price = price  # Цена товара
         self.quantity = quantity  # Количество в наличии
+
+    @classmethod
+    def new_products(cls,  name, description, price, quantity):
+        return cls(name, description, price, quantity)
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, new_price: str):
+        if float(new_price) <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+            return
+        self.__price = float(new_price)
+
+
 
     def __str__(self):
         return (
@@ -37,3 +54,8 @@ if __name__ == "__main__":
     print(product3.description)
     print(product3.price)
     print(product3.quantity)
+
+    product1.price = "-1000"
+    print(product1.price)
+    product2.price = "1000"
+    print(product2.price)
